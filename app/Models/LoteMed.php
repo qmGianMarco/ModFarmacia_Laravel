@@ -5,13 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Alumno extends Model
+class LoteMed extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'id',
-        'nombre',
-        'codigo',
+        'fecha_ingreso',
+        'fecha_venc',
+        'cantidad',
+        'medicamento_id'
     ];
 }
