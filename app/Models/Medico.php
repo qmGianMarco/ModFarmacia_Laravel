@@ -9,6 +9,8 @@ class Medico extends Model
 {
     use HasFactory;
 
+    public $table = 'medico';
+
     protected $fillable = [
         'id',
         'nombre',
