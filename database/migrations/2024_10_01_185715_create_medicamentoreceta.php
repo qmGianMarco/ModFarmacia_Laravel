@@ -12,8 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('medicamento_receta', function (Blueprint $table) {
-            $table->foreignId('medicamento_id')->constrained('medicamento', 'id');
-            $table->foreignId('receta_id')->constrained('receta', 'id');
+            $table->string('medicamento_id');
+            $table->string('receta_id');
+            $table->foreign('medicamento_id')->references('cod_siga')->on('medicamento');
+            $table->foreign('receta_id')->references('cod_receta')->on('receta');
             $table->integer('cantidad');
             $table->decimal('precio_total', 8, 2);
             $table->primary(['medicamento_id', 'receta_id']);

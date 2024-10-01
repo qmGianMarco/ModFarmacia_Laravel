@@ -12,12 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('receta', function (Blueprint $table) {
-            $table->id();
+            $table->string('cod_receta')->primary();
             $table->string('fecha');
             $table->decimal('monto', 8, 2);
             $table->string('periodo_academico');
-            $table->foreignId('alumno_id')->constrained('alumno', 'id')->onDelete('cascade');
-            $table->foreignId('medico_id')->constrained('medico', 'id')->onDelete('cascade');
+            $table->string('alumno_id');
+            $table->string('medico_id');
+            $table->foreign('alumno_id')->references('dni')->on('alumno');
+            $table->foreign('medico_id')->references('dni')->on('medico');
             $table->timestamps();
         });
     }

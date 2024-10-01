@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('usuario', function (Blueprint $table) {
             $table->id();
+            $table->string('dni')->unique();
             $table->string('nombre');
             $table->string('correo')->unique();
             $table->string('contrasena');
@@ -30,7 +31,7 @@ return new class extends Migration
 
         Schema::create('sessions', function (Blueprint $table) {
             $table->string('id')->primary();
-            $table->foreignId('usuario_id')->nullable()->index();
+            $table->foreignId('user_id')->nullable()->index();
             $table->string('ip_address', 45)->nullable();
             $table->text('user_agent')->nullable();
             $table->longText('payload');

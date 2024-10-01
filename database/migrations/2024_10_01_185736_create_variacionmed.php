@@ -17,8 +17,9 @@ return new class extends Migration
             $table->string('tipo');
             $table->string('motivo');
             $table->string('fecha');
+            $table->string('lotemed_id');
             $table->foreignId('usuario_id')->constrained('usuario', 'id');
-            $table->foreignId('lotemed_id')->constrained('lotemed', 'id');
+            $table->foreign('lotemed_id')->references('cod_lote')->on('lotemed');
         });
     }
 
